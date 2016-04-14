@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="js/angular.min.js"></script>
+<script src="js/myApp.js"></script>
+<script src="js/index3Ctrl.js"></script>
+<style>
+  .contaniner{width:1000px;margin: 0 auto;font:20px/30px "microsoft","arail"}
+</style>
+</head>
+<body>
+<div class="contaniner">
+  <div ng-app="myApp" ng-controller="myCtrl"> 
+
+  <p>现在时间是:</p>
+
+  <h1>{{theTime}}</h1>
+  <h2>{{hex}}</h2>
+  <h3>{{200|myFormat}}</h3>
+  <ul>
+    <li ng-repeat="x in counts">{{x|myFormat}}</li>
+  </ul>
+
+  <ul>
+    <li ng-repeat="x in names">
+      {{ x.Name + ', ' + x.Country }}
+    </li>
+  </ul>
+  <select ng-model="selectedName" ng-options="x for x in option"></select>
+  <p>您选择的是：{{selectedName}}</p>
+  <select>
+    <option ng-repeat="x in option">{{x}}</option>
+  </select>
+
+  <select ng-model="selectedSite" ng-options="x.site for x in sites">
+  </select>
+
+  <h1>你选择的是: {{selectedSite.site}}</h1>
+  <p>网址为: {{selectedSite.url}}</p>
+
+  <select ng-model="selectedCar" ng-options="x for (x, y) in cars">
+  </select>
+
+  <h1>你选择的是: {{selectedCar.brand}}</h1>
+  <h2>模型: {{selectedCar.model}}</h2>
+  <h3>颜色: {{selectedCar.color}}</h3>
+
+  <table>
+  <tr ng-repeat="x in names">
+  <td ng-if="$odd" style="background-color:#f1f1f1">{{ $index + 1 }}</td>
+  <td ng-if="$even">{{ $index + 1 }}</td>
+  <td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Name }}</td>
+  <td ng-if="$even">{{ x.Name }}</td>
+  <td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Country }}</td>
+  <td ng-if="$even">{{ x.Country }}</td>
+  </tr>
+  </table>
+
+  </div>
+</div>
+</body>
+</html>
+
