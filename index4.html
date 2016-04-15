@@ -1,0 +1,43 @@
+<html ng-app='myApp'>
+
+<head>
+    <title>CSS实例3</title>    
+    <script src="js/angular.min.js"></script>
+    <style>
+      .selected {background-color: lightgreen;}
+    </style>
+</head>
+
+<body>
+    <table ng-controller='RestaurantTableController'>
+        <tr ng-repeat='restaurant in directory' ng-click='selectRestaurant($index)' ng-class='{selected: $index==selectedRow}'>
+            <td>{{restaurant.name}}</td>
+            <td>{{restaurant.cuisine}}</td>
+        </tr>
+    </table>
+    
+    <script>
+    var myApp = angular.module('myApp', []);
+    myApp.controller('RestaurantTableController', function($scope) {
+        $scope.directory = [{
+                    name: 'The Handsome Heifer',
+                    cuisine: 'BBQ'
+                }, 
+                {
+                    name: 'Green Green Greens ',
+                    cuisine: 'Salads '
+                 },
+
+                {name:'House of Fine Fish ',
+                    cuisine: 'Seafood'
+                },
+                ];
+
+        $scope.selectRestaurant=function(row) {
+          $scope.selectedRow=row;
+        };
+      });
+    </script>
+</body>
+
+</html>
