@@ -1,0 +1,38 @@
+<html ng-app='myApp'>
+
+<head>
+    <title>tab 切换</title>
+    <meta charset="utf-8">    
+    <script src="js/angular.min.js"></script>
+    <style>
+      .selected {background-color: lightgreen;}
+      .tab{font: 20px/30px "microsoft YaHei","arail";}
+      .tab ul li{width: 33%;float: left;text-align: center;}
+      .tab-list:nth-child(1){display: block;}
+    </style>
+</head>
+
+<body>
+    <div class="tab" ng-controller="tabController">
+        <ul >
+            <li ng-repeat="tab in tabs" ng-class="{selected:$index==selectedIndex}" ng-click="selectedTab($index)" >{{tab}}</li>
+        </ul>
+        <div class="tab-bar">
+            <div class="tab-list" ng-repeat="tab in tabs" ng-show="$index==selectedIndex">{{tab}}</div>
+        </div>   
+    </div>
+    
+    <script>
+    var myApp = angular.module('myApp', []);
+    myApp.controller("tabController",function($scope){
+        $scope.tabs=['tab1','tab2','tab3'];
+        $scope.selectedIndex=0;
+        $scope.selectedTab=function(index){
+            $scope.selectedIndex=index;
+        }
+
+    })
+    </script>
+</body>
+
+</html>
